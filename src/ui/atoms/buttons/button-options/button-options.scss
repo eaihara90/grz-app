@@ -1,0 +1,134 @@
+.grz-btn-options {
+  position: relative;
+
+  .grz-btn {
+    align-items: center;
+    background-color: rgb(var(--c-primary));
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    transition: 200ms ease;
+  
+    &:hover {
+      background-color: rgb(var(--c-primary-dark));
+    }
+  
+    &:active {
+      background-color: rgb(var(--c-primary-darken));
+    }
+  
+    &.sm {
+      font-size: 14px;
+      height: 28px;
+      padding: 0 0 0 20px;
+
+      .icon-wrapper {
+        margin-left: 20px;
+      }
+    }
+  
+    &.md {
+      font-size: 18px;
+      height: 36px;
+      padding: 0 0 0 28px;
+
+      .icon-wrapper {
+        margin-left: 28px;
+      }
+    }
+  
+    &.lg {
+      font-size: 22px;
+      height: 44px;
+      padding: 0 0 0 36px;
+
+      .icon-wrapper {
+        margin-left: 36px;
+      }
+    }
+
+    &.open {
+      border-radius: 4px 4px 0 0;
+
+      .icon-wrapper {
+        background-color: rgb(var(--c-primary-darken));
+
+        .icon {
+          rotate: 0deg;
+        }
+      }
+    }
+
+    .icon-wrapper {
+      border-left: 1px solid rgb(var(--c-white));
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px 0;
+
+      .icon {
+        rotate: -90deg;
+        transition: 200ms ease;
+      }
+    }
+  }
+
+  .grz-list-options {
+    border-radius: 0 0 4px 4px;
+    height: 0;
+    list-style: none;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    transition: 200ms ease;
+    width: 100%;
+    z-index: 1;
+
+    &.open {
+      box-shadow: 0 2px 10px 1px rgba(var(--c-black), 0.15);
+      height: auto;
+      opacity: 1;
+      overflow: visible;
+    }
+
+    .grz-option-item {
+      background-color: transparent;
+      color: rgb(var(--c-typography));
+      cursor: pointer;
+      padding: 8px 12px;
+      transition: 200ms ease;
+
+      &:hover {
+        background-color: rgba(var(--c-primary), 0.1);
+        color: var(--c-primary);
+      }
+
+      &.sm {
+        align-items: center;
+        display: flex;
+        font-size: 12px;
+        height: 28px;
+        padding: 0 12px;
+      }
+    
+      &.md {
+        align-items: center;
+        display: flex;
+        font-size: 16px;
+        height: 36px;
+        padding: 0 12px;
+      }
+    
+      &.lg {
+        align-items: center;
+        display: flex;
+        font-size: 20px;
+        height: 44px;
+        padding: 0 12px;
+      }
+    }
+  }
+}
