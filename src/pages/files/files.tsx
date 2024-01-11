@@ -16,9 +16,11 @@ export function FilesPage(): JSX.Element {
 
   const loadFolderContent = async (): Promise<void> => {
     try {
-      const response = await fetch(`http://localhost:3005/api/folders?id=${id}`);
+      // const response = await fetch(`http://localhost:3005/api/folders?id=${id}`);
+      const response = await fetch(`http://localhost:3000/folderTrees/${id}`);
       const data = await response.json();
-      setFolderContent(data.folderContent);
+      console.log(data);
+      setFolderContent(data.content);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +28,7 @@ export function FilesPage(): JSX.Element {
 
   return (
     <PageWrapper title="File Management">
-      <FolderTree />
+      <FolderTree content={folderContent}/>
     </PageWrapper>
   );
 }

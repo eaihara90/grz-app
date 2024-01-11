@@ -15,7 +15,9 @@
     width: 4rem;
 
     &:hover, &.active {
-      background-color: rgb(var(--c-grey-100));
+      // background-color: rgb(var(--c-grey-100));
+      background-color: rgba(var(--c-primary-dark), 0.15);
+      color: rgb(var(--c-primary-dark));
     }
 
     &-icon {

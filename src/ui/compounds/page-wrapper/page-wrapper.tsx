@@ -11,7 +11,9 @@ export function PageWrapper({ children, title }: PageWrapperProps): JSX.Element 
     <main className="main-wrapper">
       <h2>{title}</h2>
 
-      {children}
+      <div className="page-content">
+        {children}
+      </div>
     </main>
   );
 }

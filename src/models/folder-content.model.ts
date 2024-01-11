@@ -3,8 +3,9 @@ export class FolderContentModel {
   title!: string;
   type!: 'file' | 'folder';
   path!: string;
-  parent!: string;
+  parent?: string;
   content?: FolderContentModel[];
   description?: string;
   url?: string;
+  isRoot?: boolean;
 }

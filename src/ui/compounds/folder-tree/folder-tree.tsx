@@ -1,7 +1,14 @@
 import './folder-tree.scss';
+import { FolderContentModel } from 'src/models/folder-content.model';
 
-export function FolderTree(): JSX.Element {
+interface FolderTreeProps {
+  content: FolderContentModel[];
+}
+
+export function FolderTree({ content }: FolderTreeProps): JSX.Element {
   return (
-    <div className="folder-tree"></div>
+    <ul className="folder-tree">
+      { content.map((x, i) => <li key={i}>{x.title}</li>)}
+    </ul>
   );
 }
