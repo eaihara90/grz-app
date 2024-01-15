@@ -17,7 +17,7 @@ export function FilesPage(): JSX.Element {
   const loadFolderContent = async (): Promise<void> => {
     try {
       // const response = await fetch(`http://localhost:3005/api/folders?id=${id}`);
-      const response = await fetch(`http://localhost:3000/folderTrees/${id}`);
+      const response = await fetch(`http://localhost:3000/folders/${id}`);
       const data = await response.json();
       console.log(data);
       setFolderContent(data.content);

@@ -1,10 +1,12 @@
 import { Route, Switch } from 'react-router-dom';
 import { HomePage } from './pages/home/home';
 import { FilesPage } from './pages/files/files';
+import { AlbumsPage } from './pages/albums/albums-page';
 
 const routes = [
   { path: '/home', component: HomePage },
-  { path: '/files', component: FilesPage }
+  { path: '/files', component: FilesPage },
+  { path: '/albums', component: AlbumsPage },
 ]
 
 export function MainRoutes(): JSX.Element {

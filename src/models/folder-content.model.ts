@@ -7,5 +7,15 @@ export class FolderContentModel {
   content?: FolderContentModel[];
   description?: string;
   url?: string;
+  thumbImgUrl?: string;
   isRoot?: boolean;
+}
+export class Folder {
+  _id!: string;
+  title!: string;
+  path!: string;
+  files?: [];
+  folders?: [];
+
+  thumbUrl?: string;
 }
