@@ -10,24 +10,38 @@ const tempFolders = [
   {
     id: '1',
     title: 'Root',
-    files: [],
-    folders: [],
+    files: [
+      {
+        description: 'Description 1',
+        imagePath: '',
+        title: 'Favorite 1',
+        url: 'https://www.google.com',
+      },
+      {
+        description: 'Description 2',
+        imagePath: '',
+        title: 'Favorite 2',
+        url: 'https://www.google.com',
+      }
+    ],
+    folders: [
+      {
+        id: '2',
+        title: 'Folder 2',
+        files: [],
+        folders: [],
+        path: 'root/folder_2'
+      },
+      {
+        id: '2',
+        title: 'Folder 3',
+        files: [],
+        folders: [],
+        path: 'root/folder_1'
+      }
+    ],
     path: 'root'
   },
-  {
-    id: '2',
-    title: 'Folder 2',
-    files: [],
-    folders: [],
-    path: 'root'
-  },
-  {
-    id: '2',
-    title: 'Folder 3',
-    files: [],
-    folders: [],
-    path: 'root/folder_1'
-  }
 ]
 
 // {
