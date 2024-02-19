@@ -1,0 +1,49 @@
+.new-content {
+  height: 100%;
+  padding: 1.6rem;
+
+  .new-content__title {
+    padding-bottom: 1.6rem;
+    border-bottom: 1px solid rgb(var(--c-grey-100));
+  }
+
+  .form {
+    display: flex;
+    flex-flow: column;
+    padding-top: 1.6rem;
+    
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+
+      & > * {
+        flex-basis: calc(50% - 1.2rem);
+      }
+    }
+
+    .input-container {
+      align-items: flex-start;
+      display: flex;
+      flex-flow: column;
+
+      label {
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 0.4rem;
+      }
+    }
+
+    .thumbnail-url-preview {
+      height: 200px;
+      width: 355px;
+
+      .image {
+        display: block;
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}

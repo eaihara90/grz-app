@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import './favorites.scss';
-import { PageWrapper } from 'src/ui/compounds/page-wrapper/page-wrapper';
 import { getFavoriteFolder } from 'src/mock/favorite-folders';
-import { Folder } from 'src/ui/compounds/folder/folder';
 import { FavoriteFolderModel } from 'src/models/favorites/favorite-folder.model';
+import { PageWrapper } from 'src/ui/compounds/page-wrapper/page-wrapper';
+import { FolderCard } from 'src/ui/compounds/folder-card/folder-card';
 import { FavoriteCard } from 'src/ui/compounds/favorite-card/favorite-card';
-import { GrzButtonOptions } from 'src/ui/atoms/buttons';
+import { GrzButton } from 'src/ui/atoms/buttons';
+import { NewContentModal } from 'src/ui/compounds/new-content-modal/new-content-modal';
 
 
 export function FavoritesPage(): JSX.Element {
@@ -15,6 +16,7 @@ export function FavoritesPage(): JSX.Element {
   const id = new URLSearchParams(location.search).get('id');
   const [content, setContent] = useState<FavoriteFolderModel>(new FavoriteFolderModel());
   const [loading, setLoading] = useState(false);
+  const [isOpenAddNewModal, setIsOpenAddNewModal] = useState<boolean>(false);
 
   useEffect(() => {
     loadFolderContent();
@@ -41,14 +43,16 @@ export function FavoritesPage(): JSX.Element {
     <PageWrapper title="Favorites">
       <div className="favorites-page">
         <div className="favorites-page__header">
-          <GrzButtonOptions label="Add new" size="sm" options={['Folder' , 'Favorite']} onSelection={(_selection) => console.log(_selection)} />
+          <GrzButton size="sm" onClick={() => setIsOpenAddNewModal(true)}>Add new</GrzButton>
         </div>
 
         <div className="favorites-page__content">
-          { (!loading && content!.folders?.length > 0) && content?.folders?.map((folder, i) => <Folder key={i} title={folder.title} path={`/favorites?id=${folder.path}`} />) }
+          { (!loading && content!.folders?.length > 0) && content?.folders?.map((folder, i) => <FolderCard key={i} title={folder.title} path={`/favorites?id=${folder.path}`} />) }
           { (!loading && content!.favorites?.length > 0) && content?.favorites?.map((favorite, i) => <FavoriteCard key={i} title={favorite.title} url={favorite.url || ''}/>)}
         </div>
       </div>
+
+      {isOpenAddNewModal && <NewContentModal onClose={() => setIsOpenAddNewModal(false)}/> }
     </PageWrapper>
   );
 }

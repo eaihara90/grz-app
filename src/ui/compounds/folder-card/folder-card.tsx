@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import './folder.scss';
+import './folder-card.scss';
 import { GrzIconButton } from 'src/ui/atoms/buttons';
 
 interface FolderProps {
@@ -9,13 +9,13 @@ interface FolderProps {
   thumbnailUrl?: string;
 }
 
-export function Folder({ title, path }: FolderProps): JSX.Element {
+export function FolderCard({ title, path }: FolderProps): JSX.Element {
   return (
-    <Link to={path} className="folder">
-      <i className="ph ph-folder-simple folder__icon"></i>
-      <p className="folder__title">{title}</p>
+    <Link to={path} className="folder-card">
+      <i className="ph ph-folder-simple folder-card__icon"></i>
+      <p className="folder-card__title">{title}</p>
 
-      <div className="folder__actions">
+      <div className="folder-card__actions">
         <GrzIconButton size="md" onClick={(ev) => ev.preventDefault()}>
           <i className="ph ph-pencil-simple-line"></i>
         </GrzIconButton>

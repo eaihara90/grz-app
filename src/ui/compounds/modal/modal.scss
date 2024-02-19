@@ -1,0 +1,19 @@
+.backdrop {
+  background-color: rgb(var(--c-black), 0.5);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: rgb(var(--c-white));
+  border-radius: 4px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: 1001;
+}

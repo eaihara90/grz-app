@@ -22,4 +22,8 @@
   &:focus {
     border-color: rgb(var(--c-primary));  
   }
+
+  &.full-width {
+    width: 100%;
+  }
 }
