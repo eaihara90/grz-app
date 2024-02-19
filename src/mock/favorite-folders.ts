@@ -1,47 +1,119 @@
-export function getFolders(path: string) {
-  return new Promise((res, rej) => {
+import { FavoriteFolderModel } from 'src/models/favorites/favorite-folder.model';
+
+export function getFavoriteFolder(path: string): Promise<FavoriteFolderModel> {
+  return new Promise((res) => {
     setTimeout(() => {
-      res(tempFolders.filter(folder => folder.path === path))
+      res(tempFavoriteFolders.find(folder => folder.path === path) as FavoriteFolderModel);
     }, 1000);
   });
 }
 
-const tempFolders = [
+const tempFavoriteFolders: FavoriteFolderModel[] = [
   {
-    id: '1',
+    _id: '1',
     title: 'Root',
-    files: [
+    favorites: [
       {
         description: 'Description 1',
-        imagePath: '',
+        thumbnailUrl: '',
         title: 'Favorite 1',
         url: 'https://www.google.com',
       },
       {
         description: 'Description 2',
-        imagePath: '',
+        thumbnailUrl: '',
         title: 'Favorite 2',
         url: 'https://www.google.com',
       }
     ],
     folders: [
       {
-        id: '2',
-        title: 'Folder 2',
-        files: [],
-        folders: [],
-        path: 'root/folder_2'
+        _id: '1',
+        title: 'Folder 1',
+        path: 'root/folder_1',
+        favorites: [],
+        folders: []
       },
       {
-        id: '2',
-        title: 'Folder 3',
-        files: [],
-        folders: [],
-        path: 'root/folder_1'
+        _id: '2',
+        title: 'Folder 2',
+        path: 'root/folder_2',
+        favorites: [],
+        folders: []
       }
     ],
     path: 'root'
   },
+  {
+    _id: '1',
+    title: 'Folder 1',
+    favorites: [
+      {
+        description: 'Description 1',
+        thumbnailUrl: '',
+        title: 'Folder 1 - Favorite 1',
+        url: 'https://www.google.com',
+      },
+      {
+        description: 'Description 2',
+        thumbnailUrl: '',
+        title: 'Folder 1 - Favorite 2',
+        url: 'https://www.google.com',
+      }
+    ],
+    folders: [
+      {
+        _id: '1',
+        title: 'Sub Folder 1-1',
+        favorites: [],
+        folders: [],
+        path: 'root/folder_1/sub_folder_1-1'
+      },
+      {
+        _id: '2',
+        title: 'Sub Folder 1-2',
+        favorites: [],
+        folders: [],
+        path: 'root/folder_1/sub_folder_1-2'
+      }
+    ],
+    path: 'root/folder_1'
+  },
+  {
+    _id: '2',
+    title: 'Folder 2',
+    favorites: [
+      {
+        description: 'Description 1',
+        thumbnailUrl: '',
+        title: 'Folder 2 - Favorite 1',
+        url: 'https://www.google.com',
+      },
+      {
+        description: 'Description 2',
+        thumbnailUrl: '',
+        title: 'Folder 2 - Favorite 2',
+        url: 'https://www.google.com',
+      }
+    ],
+    folders: [
+      {
+        _id: '1',
+        title: 'Sub Folder 2-1',
+        favorites: [],
+        folders: [],
+        path: 'root/folder_2/sub_folder_2-1'
+      },
+      {
+        _id: '2',
+        title: 'Sub Folder 2-2',
+        favorites: [],
+        folders: [],
+        path: 'root/folder_2/sub_folder_2-2'
+      }
+    ],
+    path: 'root/folder_2'
+  }
 ]
 
 // {

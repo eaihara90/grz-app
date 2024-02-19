@@ -5,6 +5,7 @@ export function SideNav(): JSX.Element {
   const links: { path: string, label: string, iconClass: string }[] = [
     { iconClass: 'ph-bold ph-house', label: 'Home', path: '/home' },
     { iconClass: 'ph-bold ph-folder', label: 'Files', path: '/files?id=root' },
+    { iconClass: 'ph-bold ph-star', label: 'Favorites', path: '/favorites?id=root' },
     { iconClass: 'ph-bold ph-images', label: 'Albums', path: '/albums' },
     { iconClass: 'ph-bold ph-user', label: 'User', path: '/user' },
     { iconClass: 'ph-bold ph-gear', label: 'Configuration', path: '/config' },
