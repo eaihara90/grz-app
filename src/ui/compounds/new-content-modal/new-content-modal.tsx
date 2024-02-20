@@ -2,6 +2,7 @@ import './new-content-modal.scss';
 import { Modal } from '../modal/modal';
 import { useState } from 'react';
 import { GrzInput } from 'src/ui/atoms/input/input';
+import { GrzButton } from 'src/ui/atoms/buttons';
 
 interface NewContentModalProps {
   onClose: () => void;
@@ -13,8 +14,6 @@ export function NewContentModal({ onClose }: NewContentModalProps): JSX.Element 
 
   return (
     <Modal
-      height='80%'
-      width='70%'
       onClose={onClose}>
       <div className="new-content">
         <h3 className="new-content__title">Create a new content</h3>
@@ -69,6 +68,11 @@ export function NewContentModal({ onClose }: NewContentModalProps): JSX.Element 
               }
             </>
           }
+
+          <div className={`form__action-buttons ${contentType === 'favorite' ? 'end-buttons' : ''} `}>
+            <GrzButton size="sm" onClick={onClose}>Cancel</GrzButton>
+            <GrzButton disabled={!contentType} size="sm">Save</GrzButton>
+          </div>
         </form>
       </div>
     </Modal>

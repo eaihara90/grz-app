@@ -17,6 +17,11 @@
     background-color: rgb(var(--c-primary-darken))
   }
 
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
   &.sm {
     font-size: 14px;
     height: 28px;
