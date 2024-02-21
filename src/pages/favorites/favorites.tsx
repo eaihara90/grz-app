@@ -52,7 +52,7 @@ export function FavoritesPage(): JSX.Element {
         </div>
       </div>
 
-      {isOpenAddNewModal && <NewContentModal onClose={() => setIsOpenAddNewModal(false)}/> }
+      {isOpenAddNewModal && <NewContentModal onClose={() => setIsOpenAddNewModal(false)} path={id}/> }
     </PageWrapper>
   );
 }

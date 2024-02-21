@@ -1,6 +1,8 @@
 export class FavoriteModel {
-  description?: string;
-  thumbnailUrl?: string;
-  title!: string;
-  url!: string;
+  constructor(
+    public title: string,
+    public url: string,
+    public description: string,
+    public thumbnailUrl: string,
+  ) { }
 }

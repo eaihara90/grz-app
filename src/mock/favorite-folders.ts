@@ -8,6 +8,18 @@ export function getFavoriteFolder(path: string): Promise<FavoriteFolderModel> {
   });
 }
 
+export function saveFavorite(_favorite: any, path: string): Promise<any> {
+  tempFavoriteFolders.forEach(folder => {
+    if (folder.path === path) {
+      console.log('added');
+      folder.favorites.push(_favorite)
+    }
+  });
+  return new Promise((res) => {
+    res(tempFavoriteFolders);
+  });
+}
+
 const tempFavoriteFolders: FavoriteFolderModel[] = [
   {
     _id: '1',
