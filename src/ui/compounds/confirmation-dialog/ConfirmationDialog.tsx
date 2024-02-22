@@ -31,7 +31,7 @@ export function ConfirmationDialog({ children, confirmationText, onClose, onConf
             </div>
 
             <div className="action-buttons">
-              <GrzButton size="sm" onClick={onClose} theme={theme}>Cancel</GrzButton>
+              <GrzButton size="sm" onClick={onClose} theme={'secondary'}>Cancel</GrzButton>
               <GrzButton size="sm" type="submit" disabled={confirmationText !== confirmationInput} theme={theme}>Confirm</GrzButton>
             </div>
           </form>
@@ -39,7 +39,7 @@ export function ConfirmationDialog({ children, confirmationText, onClose, onConf
 
         { !confirmationText &&
           <div className="action-buttons">
-            <GrzButton size="sm" onClick={onClose} theme={theme}>Cancel</GrzButton>
+            <GrzButton size="sm" onClick={onClose} theme={'secondary'}>Cancel</GrzButton>
             <GrzButton size="sm" type="button" onClick={onConfirm} theme={theme}>Confirm</GrzButton>
           </div>
         }

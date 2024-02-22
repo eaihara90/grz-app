@@ -60,7 +60,7 @@ export function NewFavoriteModal({ onClose, currentPath }: NewContentModalProps)
           }
 
           <div className={`action-buttons`}>
-            <GrzButton size="sm" onClick={onClose}>Cancel</GrzButton>
+            <GrzButton size="sm" onClick={onClose} theme="secondary">Cancel</GrzButton>
             <GrzButton disabled={!favorite.title || !favorite.url} size="sm" onClick={handleSaveContent}>Save</GrzButton>
           </div>
         </form>

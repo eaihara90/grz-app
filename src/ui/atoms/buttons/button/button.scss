@@ -20,7 +20,7 @@
     }
   
     &:active {
-      background-color: rgb(var(--c-primary-darken))
+      background-color: rgb(var(--c-primary-darken));
     }
   }
   
@@ -32,7 +32,23 @@
     }
   
     &:active {
-      background-color: rgb(var(--c-danger-darken))
+      background-color: rgb(var(--c-danger-darken));
+    }
+  }
+
+  &--secondary {
+    background-color: rgb(var(--c-white));
+    border-color: rgb(var(--c-secondary));
+    color: rgb(var(--c-secondary));
+
+    &:hover {
+      border-color: rgb(var(--c-secondary-dark));
+      color: rgb(var(--c-secondary-dark));
+    }
+  
+    &:active {
+      border-color: rgb(var(--c-secondary-darken));
+      color: rgb(var(--c-secondary-darken));
     }
   }
 

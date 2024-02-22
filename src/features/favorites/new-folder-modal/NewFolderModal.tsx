@@ -29,7 +29,7 @@ export function NewFolderModal({ currentPath, onClose }: NewFolderModal): JSX.El
           </div>
 
           <div className={`action-buttons`}>
-            <GrzButton size="sm" onClick={onClose}>Cancel</GrzButton>
+            <GrzButton size="sm" theme="secondary" onClick={onClose}>Cancel</GrzButton>
             <GrzButton disabled={!folderTitle} size="sm" onClick={saveFolder}>Save</GrzButton>
           </div>
         </form>

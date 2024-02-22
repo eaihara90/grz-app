@@ -20,7 +20,7 @@ export function FavoriteFolderCard({ title, path }: FavoriteFolderCardProps): JS
           <i className="ph ph-pencil-simple-line"></i>
         </GrzIconButton>
 
-        <GrzIconButton size="md">
+        <GrzIconButton size="md" theme="danger">
           <i className="ph ph-trash"></i>
         </GrzIconButton>
       </div>

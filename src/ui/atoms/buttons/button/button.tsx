@@ -5,7 +5,7 @@ import './Button.scss';
 interface GrzButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
   size?: 'sm' | 'md' | 'lg';
-  theme?: 'primary' | 'danger';
+  theme?: 'primary' | 'danger' | 'secondary';
 }
 
 export function GrzButton({ children, size = 'md', theme = 'primary', ...props }: GrzButtonProps): JSX.Element {
