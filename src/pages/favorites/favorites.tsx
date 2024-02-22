@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import './favorites.scss';
+import './Favorites.scss';
 import { getFavoriteFolder } from 'src/mock/favorite-folders';
 import { FavoriteFolderModel } from 'src/models/favorites/favorite-folder.model';
-import { PageWrapper } from 'src/ui/compounds/page-wrapper/page-wrapper';
-import { FolderCard } from 'src/ui/compounds/folder-card/folder-card';
-import { FavoriteCard } from 'src/ui/compounds/favorite-card/favorite-card';
+import { PageWrapper } from 'src/ui/compounds/page-wrapper/PageWrapper';
+import { FolderCard } from 'src/features/files/folder-card/FolderCard';
+import { FavoriteCard } from 'src/features/favorites/favorite-card/FavoriteCard';
 import { GrzButton } from 'src/ui/atoms/buttons';
-import { NewContentModal } from 'src/ui/compounds/new-content-modal/new-content-modal';
+import { NewContentModal } from 'src/features/favorites/new-content-modal/NewContentModal';
 
 
 export function FavoritesPage(): JSX.Element {

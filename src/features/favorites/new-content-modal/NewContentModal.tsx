@@ -1,9 +1,9 @@
-import './new-content-modal.scss';
-import { Modal } from '../modal/modal';
+import './NewContentModal.scss';
+import { Modal } from '../../../ui/compounds/modal/Modal';
 import { ChangeEvent, useState } from 'react';
-import { GrzInput } from 'src/ui/atoms/input/input';
+import { GrzInput } from 'src/ui/atoms/input/Input';
 import { GrzButton } from 'src/ui/atoms/buttons';
-import { GrzSelect } from 'src/ui/atoms/select/select';
+import { GrzSelect } from 'src/ui/atoms/select/Select';
 import { FavoriteModel } from 'src/models/favorites/favorite.model';
 import { saveFavorite } from 'src/mock/favorite-folders';
 

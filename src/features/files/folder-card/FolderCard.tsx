@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import './folder-card.scss';
+import './FolderCard.scss';
 import { GrzIconButton } from 'src/ui/atoms/buttons';
 
 interface FolderProps {

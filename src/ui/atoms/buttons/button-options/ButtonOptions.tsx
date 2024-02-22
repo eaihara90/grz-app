@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, useEffect, useRef, useState } from 'react';
-import './button-options.scss';
+import './ButtonOptions.scss';
 
 interface GrzButtonOptionsProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;

@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
 
-import './button.scss';
+import './Button.scss';
 
 interface GrzButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;

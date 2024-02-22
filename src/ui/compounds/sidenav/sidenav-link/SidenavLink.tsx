@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router-dom';
-import './sidenav-link.scss';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import './SidenavLink.scss';
 
 interface SideNavLinkProps {
   iconClass: string;

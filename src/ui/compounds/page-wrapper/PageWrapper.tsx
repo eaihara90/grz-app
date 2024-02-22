@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import './page-wrapper.scss';
+import './PageWrapper.scss';
 
 interface PageWrapperProps {
   children: ReactNode;

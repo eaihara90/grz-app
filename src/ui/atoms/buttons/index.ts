@@ -1,3 +1,3 @@
-export * from './button/button';
-export * from './button-options/button-options';
-export * from './icon-button/icon-button';
+export * from './button/Button';
+export * from './button-options/ButtonOptions';
+export * from './icon-button/IconButton';

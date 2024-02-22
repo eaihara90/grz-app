@@ -1,5 +1,5 @@
-import { SideNavLink } from 'src/ui/atoms/sidenav-link/sidenav-link';
-import './sidenav.scss';
+import { SideNavLink } from 'src/ui/compounds/sidenav/sidenav-link/SidenavLink';
+import './Sidenav.scss';
 
 export function SideNav(): JSX.Element {
   const links: { path: string, label: string, iconClass: string }[] = [

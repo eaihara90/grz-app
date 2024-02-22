@@ -1,4 +1,4 @@
-// import './folder-tree.scss';
+// import './FolderTree.scss';
 // import { FolderContentModel } from 'src/models/file-management.model';
 
 // interface FolderTreeProps {

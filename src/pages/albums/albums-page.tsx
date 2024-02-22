@@ -1,4 +1,4 @@
-import { PageWrapper } from 'src/ui/compounds/page-wrapper/page-wrapper';
+import { PageWrapper } from 'src/ui/compounds/page-wrapper/PageWrapper';
 import './albums-page.scss';
 import { useEffect, useState } from 'react';
 

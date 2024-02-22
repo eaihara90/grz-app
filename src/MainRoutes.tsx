@@ -1,7 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
-import { HomePage } from './pages/home/home';
-import { FilesPage } from './pages/files/files';
-import { FavoritesPage } from './pages/favorites/favorites';
+import { HomePage } from './pages/home/Home';
+import { FavoritesPage } from './pages/favorites/Favorites';
 import { AlbumsPage } from './pages/albums/albums-page';
 
 const routes = [

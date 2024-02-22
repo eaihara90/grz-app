@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 
-import './modal.scss';
+import './Modal.scss';
 import { ReactNode, useEffect } from 'react';
 
 interface ModalProps {

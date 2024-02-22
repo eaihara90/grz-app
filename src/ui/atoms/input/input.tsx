@@ -1,5 +1,5 @@
 import { InputHTMLAttributes } from 'react';
-import './input.scss';
+import './Input.scss';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   fullWidth?: boolean;
