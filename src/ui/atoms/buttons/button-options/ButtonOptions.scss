@@ -1,22 +1,41 @@
+@mixin btn-style {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  transition: 200ms ease;
+}
+
 .grz-btn-options {
   position: relative;
 
   .grz-btn {
-    align-items: center;
-    background-color: rgb(var(--c-primary));
-    border: 1px solid transparent;
-    border-radius: 4px;
-    cursor: pointer;
-    display: flex;
-    font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    transition: 200ms ease;
+    @include btn-style;
+    
+    &--primary {
+      background-color: rgb(var(--c-primary));
   
-    &:hover {
-      background-color: rgb(var(--c-primary-dark));
+      &:hover {
+        background-color: rgb(var(--c-primary-dark));
+      }
+    
+      &:active {
+        background-color: rgb(var(--c-primary-darken))
+      }
     }
+    
+    &--danger {
+      background-color: rgb(var(--c-danger));
   
-    &:active {
-      background-color: rgb(var(--c-primary-darken));
+      &:hover {
+        background-color: rgb(var(--c-danger-dark));
+      }
+    
+      &:active {
+        background-color: rgb(var(--c-danger-darken))
+      }
     }
   
     &.sm {

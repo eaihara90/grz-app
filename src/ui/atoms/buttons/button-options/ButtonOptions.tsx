@@ -6,9 +6,10 @@ interface GrzButtonOptionsProps extends ButtonHTMLAttributes<HTMLButtonElement> 
   onSelection: (_selection: string) => void;
   options: string[];
   size: 'sm' | 'md' | 'lg';
+  theme?: 'primary' | 'danger';
 }
 
-export function GrzButtonOptions({ label, onSelection, options, size = 'md', ...props }: GrzButtonOptionsProps): JSX.Element {
+export function GrzButtonOptions({ label, onSelection, options, size = 'md', theme = 'primary', ...props }: GrzButtonOptionsProps): JSX.Element {
   const grzBtnOptRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -17,7 +18,7 @@ export function GrzButtonOptions({ label, onSelection, options, size = 'md', ...
     setIsOpen(false);
   }
 
-  const handleGrzBtnClick = (ev: MouseEvent): void => {
+  const handleBtnClick = (ev: MouseEvent): void => {
     const target = ev.target as Node;
     
     if (target && grzBtnOptRef && !grzBtnOptRef.current?.contains(target)) {
@@ -26,10 +27,10 @@ export function GrzButtonOptions({ label, onSelection, options, size = 'md', ...
   }
 
   useEffect(() => {
-    window.addEventListener('click', handleGrzBtnClick);
+    window.addEventListener('click', handleBtnClick);
 
     return () => {
-      window.removeEventListener('click', handleGrzBtnClick)
+      window.removeEventListener('click', handleBtnClick)
     };
   }, []);
 
@@ -38,7 +39,7 @@ export function GrzButtonOptions({ label, onSelection, options, size = 'md', ...
       className="grz-btn-options"
       ref={grzBtnOptRef}>
       <button {...props}
-        className={`grz-btn ${size} ${isOpen ? 'open' : ''}`}
+        className={`grz-btn grz-btn--${theme} ${size} ${isOpen ? 'open' : ''}`}
         onClick={() => setIsOpen(_prev => !_prev)}>
         {label}
         <div className="icon-wrapper">

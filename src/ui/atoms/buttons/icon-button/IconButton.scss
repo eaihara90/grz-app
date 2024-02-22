@@ -1,20 +1,37 @@
 .icon-btn {
   align-items: center;
-  background-color: rgba(var(--c-primary), 0.05);
   border: 1px solid transparent;
   border-radius: 50%;
   cursor: pointer;
-  color: rgb(var(--c-primary));
   display: flex;
   justify-content: center;
   transition: 200ms ease;
   
-  &:hover {
-    background-color: rgba(var(--c-primary), 0.1);
+
+  &--primary {
+    background-color: rgba(var(--c-primary), 0.05);
+    color: rgb(var(--c-primary));
+
+    &:hover {
+      background-color: rgba(var(--c-primary), 0.1);
+    }
+  
+    &:active {
+      background-color: rgba(var(--c-primary), 0.15);
+    }
   }
 
-  &:active {
-    background-color: rgba(var(--c-primary), 0.15);
+  &--danger {
+    background-color: rgba(var(--c-danger), 0.05);
+    color: rgb(var(--c-danger));
+
+    &:hover {
+      background-color: rgba(var(--c-danger), 0.1);
+    }
+  
+    &:active {
+      background-color: rgba(var(--c-danger), 0.15);
+    }
   }
 
   &.sm {

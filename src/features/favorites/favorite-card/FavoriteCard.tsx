@@ -25,7 +25,7 @@ export function FavoriteCard({ title, url }: FavoriteCardProps): JSX.Element {
           <i className="ph ph-pencil-simple-line"></i>
         </GrzIconButton>
 
-        <GrzIconButton size="md" onClick={() => setIsOpenRemoveConfirmationDialog(true)}>
+        <GrzIconButton size="md" theme="danger" onClick={() => setIsOpenRemoveConfirmationDialog(true)}>
           <i className="ph ph-trash"></i>
         </GrzIconButton>
       </div>
@@ -34,6 +34,7 @@ export function FavoriteCard({ title, url }: FavoriteCardProps): JSX.Element {
         <ConfirmationDialog
           title="Remove favorite"
           confirmationText="remove"
+          theme="danger"
           onClose={() => setIsOpenRemoveConfirmationDialog(false)}
           onConfirm={() => console.log('Confirmado')}>
           Type "remove" and click confirm to remove this favorite

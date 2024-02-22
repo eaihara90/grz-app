@@ -9,9 +9,10 @@ interface ConfirmationDialogProps {
   onClose: () => void;
   onConfirm: () => void;
   title: string;
+  theme?: 'primary' | 'danger';
 }
 
-export function ConfirmationDialog({ children, confirmationText, onClose, onConfirm, title }: ConfirmationDialogProps): JSX.Element {
+export function ConfirmationDialog({ children, confirmationText, onClose, onConfirm, title, theme = 'primary' }: ConfirmationDialogProps): JSX.Element {
   const [confirmationInput, setConfirmationInput] = useState<string>('');
 
   const handleSubmit = (ev: FormEvent<HTMLFormElement>): void => {
@@ -30,16 +31,16 @@ export function ConfirmationDialog({ children, confirmationText, onClose, onConf
             </div>
 
             <div className="action-buttons">
-              <GrzButton size="sm" onClick={onClose}>Cancel</GrzButton>
-              <GrzButton size="sm" type="submit" disabled={confirmationText !== confirmationInput}>Confirm</GrzButton>
+              <GrzButton size="sm" onClick={onClose} theme={theme}>Cancel</GrzButton>
+              <GrzButton size="sm" type="submit" disabled={confirmationText !== confirmationInput} theme={theme}>Confirm</GrzButton>
             </div>
           </form>
         }
 
         { !confirmationText &&
           <div className="action-buttons">
-            <GrzButton size="sm" onClick={onClose}>Cancel</GrzButton>
-            <GrzButton size="sm" type="button" onClick={onConfirm}>Confirm</GrzButton>
+            <GrzButton size="sm" onClick={onClose} theme={theme}>Cancel</GrzButton>
+            <GrzButton size="sm" type="button" onClick={onConfirm} theme={theme}>Confirm</GrzButton>
           </div>
         }
       </div>
