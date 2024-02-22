@@ -7,10 +7,11 @@ interface ModalProps {
   children: ReactNode;
   height?: string;
   onClose: () => void;
+  title: string;
   width?: string;
 }
 
-export function Modal({ children, onClose, height, width }: ModalProps): JSX.Element {
+export function Modal({ children, onClose, height, title, width }: ModalProps): JSX.Element {
   const handleKeyDown = (ev: KeyboardEvent): void => {
     switch (ev.code) {
       case 'Escape':
@@ -34,6 +35,7 @@ export function Modal({ children, onClose, height, width }: ModalProps): JSX.Ele
       <>
         <div className="backdrop" onClick={onClose}></div>
         <div className="modal" style={{ height, width }}>
+          <h3 className="modal__title">{title}</h3>
           {children}
         </div>
       </>,

@@ -1,0 +1,18 @@
+.confirmation-dialog {
+  &__text {
+    margin-bottom: 1.2rem;
+  }
+
+  .input-container {
+    margin-bottom: 3.2rem;
+  }
+
+  .action-buttons {
+    align-items: center;
+    border-top: 1px solid rgb(var(--c-border-grey));
+    display: flex;
+    gap: 1.2rem;
+    justify-content: flex-end;
+    padding-top: 1.6rem;
+  }
+}

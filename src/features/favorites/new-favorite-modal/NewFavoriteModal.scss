@@ -1,16 +1,9 @@
-.new-content {
+.new-favorite {
   height: 100%;
-  padding: 1.6rem;
 
-  .new-content__title {
-    border-bottom: 1px solid rgb(var(--c-grey-100));
-    padding-bottom: 1.6rem;
-  }
-
-  .form {
+  &__form {
     display: flex;
     flex-flow: column;
-    padding-top: 1.6rem;
     
     .two-columns {
       display: flex;
@@ -48,18 +41,14 @@
       }
     }
 
-    &__action-buttons {
+    .action-buttons {
       align-items: center;
-      border-top: 1px solid rgb(var(--c-grey-100));
+      border-top: 1px solid rgb(var(--c-border-grey));
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       gap: 1.2rem;
       margin-top: 1.6rem;
       padding-top: 1.6rem;
-
-      &.end-buttons {
-        justify-content: flex-end;
-      }
     }
   }
 }

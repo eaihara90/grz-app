@@ -1,4 +1,4 @@
-.favorite-card {
+.favorite-folder-card {
   align-items: center;
   border-radius: 4px;
   color: rgb(var(--c-typography));
@@ -28,11 +28,5 @@
     display: flex;
     gap: 1.2rem;
     justify-content: center;
-    
-    .link {
-      color: inherit;
-      line-height: 1;
-      text-decoration: none;
-    }
   }
 }

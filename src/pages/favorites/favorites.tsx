@@ -4,19 +4,16 @@ import { useLocation } from 'react-router-dom';
 import './Favorites.scss';
 import { getFavoriteFolder } from 'src/mock/favorite-folders';
 import { FavoriteFolderModel } from 'src/models/favorites/favorite-folder.model';
-import { PageWrapper } from 'src/ui/compounds/page-wrapper/PageWrapper';
-import { FolderCard } from 'src/features/files/folder-card/FolderCard';
-import { FavoriteCard } from 'src/features/favorites/favorite-card/FavoriteCard';
-import { GrzButton } from 'src/ui/atoms/buttons';
-import { NewContentModal } from 'src/features/favorites/new-content-modal/NewContentModal';
-
+import { PageWrapper } from 'src/ui/compounds';
+import { GrzButtonOptions } from 'src/ui/atoms';
+import { FavoriteCard, FavoriteFolderCard, NewFavoriteModal, NewFolderModal } from 'src/features/favorites';
 
 export function FavoritesPage(): JSX.Element {
   const location = useLocation();
   const id = new URLSearchParams(location.search).get('id');
   const [content, setContent] = useState<FavoriteFolderModel>(new FavoriteFolderModel());
   const [loading, setLoading] = useState(false);
-  const [isOpenAddNewModal, setIsOpenAddNewModal] = useState<boolean>(false);
+  const [newContentModal, setNewContentModal] = useState<{ open: boolean, type: string }>({ open: false, type: '' });
 
   useEffect(() => {
     loadFolderContent();
@@ -39,20 +36,30 @@ export function FavoritesPage(): JSX.Element {
     }
   }
 
+  const handleOpenModal = (_selection: string): void => {
+    setNewContentModal({ open: true, type: _selection.toLowerCase() });
+  }
+
   return (
     <PageWrapper title="Favorites">
       <div className="favorites-page">
         <div className="favorites-page__header">
-          <GrzButton size="sm" onClick={() => setIsOpenAddNewModal(true)}>Add new</GrzButton>
+          <GrzButtonOptions
+            options={['Folder', 'Favorite']}
+            label="Add new"
+            size="sm"
+            onSelection={handleOpenModal}
+          />
         </div>
 
         <div className="favorites-page__content">
-          { (!loading && content!.folders?.length > 0) && content?.folders?.map((folder, i) => <FolderCard key={i} title={folder.title} path={`/favorites?id=${folder.path}`} />) }
+          { (!loading && content!.folders?.length > 0) && content?.folders?.map((folder, i) => <FavoriteFolderCard key={i} title={folder.title} path={`/favorites?id=${folder.path}`} />) }
           { (!loading && content!.favorites?.length > 0) && content?.favorites?.map((favorite, i) => <FavoriteCard key={i} title={favorite.title} url={favorite.url || ''}/>)}
         </div>
       </div>
 
-      {isOpenAddNewModal && <NewContentModal onClose={() => setIsOpenAddNewModal(false)} path={id}/> }
+      {(newContentModal.open && newContentModal.type === 'folder')  && <NewFolderModal onClose={() => setNewContentModal({ open: false, type: '' })} currentPath={id}/>}
+      {(newContentModal.open && newContentModal.type === 'favorite')  && <NewFavoriteModal onClose={() => setNewContentModal({ open: false, type: '' })} currentPath={id}/>}
     </PageWrapper>
   );
 }
