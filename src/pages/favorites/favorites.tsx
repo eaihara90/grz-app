@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import './Favorites.scss';
-import { getFavoriteFolder } from 'src/mock/favorite-folders';
+import { favoriteHttpService } from 'src/services/favorite-http.service';
 import { FavoriteFolderModel } from 'src/models/favorites/favorite-folder.model';
 import { PageWrapper } from 'src/ui/compounds';
 import { GrzButtonOptions } from 'src/ui/atoms';
@@ -22,22 +22,28 @@ export function FavoritesPage(): JSX.Element {
   const loadFolderContent = async (): Promise<void> => {
     setLoading(true);
 
-    try {
-      // const response = await fetch(`http://localhost:3005/api/folders?id=${id}`);
-      // const response = await fetch(`http://localhost:3000/folders/${id}`);
-      // const data = await response.json();
-      const folder: FavoriteFolderModel = await getFavoriteFolder(id || 'root');
-      console.log(folder);
+    favoriteHttpService.getFavoriteFolderContent(id || 'root')
+    .then((_response) => _response.json())
+    .then(({ folder }) => {
       setContent(folder);
       setLoading(false);
-    } catch (error) {
+    })
+    .catch(error => {
       console.log(error);
       setLoading(false);
-    }
+    });
   }
 
   const handleOpenModal = (_selection: string): void => {
     setNewContentModal({ open: true, type: _selection.toLowerCase() });
+  }
+
+  const handleRemoveFolder = (_id: string): void => {
+
+  }
+
+  const handleRemoveFavorite = (_id: string): void => {
+
   }
 
   return (
@@ -53,13 +59,21 @@ export function FavoritesPage(): JSX.Element {
         </div>
 
         <div className="favorites-page__content">
-          { (!loading && content!.folders?.length > 0) && content?.folders?.map((folder, i) => <FavoriteFolderCard key={i} title={folder.title} path={`/favorites?id=${folder.path}`} />) }
-          { (!loading && content!.favorites?.length > 0) && content?.favorites?.map((favorite, i) => <FavoriteCard key={i} title={favorite.title} url={favorite.url || ''}/>)}
+          { (!loading && content!.folders?.length > 0) && content?.folders?.map((folder, i) => (
+            <FavoriteFolderCard key={i} folder={folder} onRemoveFolder={handleRemoveFolder}/>
+          ))}
+          { (!loading && content!.favorites?.length > 0) && content?.favorites?.map((favorite, i) => (
+            <FavoriteCard key={i} favorite={favorite} onRemoveFavorite={handleRemoveFavorite}/>
+          ))}
         </div>
       </div>
 
-      {(newContentModal.open && newContentModal.type === 'folder')  && <NewFolderModal onClose={() => setNewContentModal({ open: false, type: '' })} currentPath={id}/>}
-      {(newContentModal.open && newContentModal.type === 'favorite')  && <NewFavoriteModal onClose={() => setNewContentModal({ open: false, type: '' })} currentPath={id}/>}
+      { (newContentModal.open && newContentModal.type === 'folder')  && 
+        <NewFolderModal onClose={() => setNewContentModal({ open: false, type: '' })} currentPath={id}/>
+      }
+      { (newContentModal.open && newContentModal.type === 'favorite')  && 
+        <NewFavoriteModal onClose={() => setNewContentModal({ open: false, type: '' })} currentPath={id}/>
+      }
     </PageWrapper>
   );
 }

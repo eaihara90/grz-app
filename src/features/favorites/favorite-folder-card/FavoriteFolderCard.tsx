@@ -1,19 +1,22 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './FavoriteFolderCard.scss';
 import { GrzIconButton } from 'src/ui/atoms/buttons';
+import { ConfirmationDialog } from 'src/ui/compounds';
+import { FavoriteFolderModel } from 'src/models/favorites/favorite-folder.model';
 
 interface FavoriteFolderCardProps {
-  path: string;
-  title: string;
-  thumbnailUrl?: string;
+  folder: FavoriteFolderModel;
+  onRemoveFolder: (_id: string) => void;
 }
 
-export function FavoriteFolderCard({ title, path }: FavoriteFolderCardProps): JSX.Element {
+export function FavoriteFolderCard({ folder, onRemoveFolder }: FavoriteFolderCardProps): JSX.Element {
+  const [isOpenRemoveConfirmationDialog, setIsOpenRemoveConfirmationDialog] = useState<boolean>(false);
   return (
-    <Link to={path} className="favorite-folder-card">
+    <Link to={`/favorites?id=${folder._id}`} className="favorite-folder-card">
       <i className="ph ph-folder-simple favorite-folder-card__icon"></i>
-      <p className="favorite-folder-card__title">{title}</p>
+      <p className="favorite-folder-card__title">{folder.title}</p>
 
       <div className="favorite-folder-card__actions">
         <GrzIconButton size="md" onClick={(ev) => ev.preventDefault()}>
@@ -24,6 +27,17 @@ export function FavoriteFolderCard({ title, path }: FavoriteFolderCardProps): JS
           <i className="ph ph-trash"></i>
         </GrzIconButton>
       </div>
+
+      { isOpenRemoveConfirmationDialog &&
+        <ConfirmationDialog
+          title="Remove favorite"
+          confirmationText="remove"
+          theme="danger"
+          onClose={() => setIsOpenRemoveConfirmationDialog(false)}
+          onConfirm={() => onRemoveFolder(folder._id)}>
+          Type "remove" and click confirm to remove this favorite
+        </ConfirmationDialog>
+      }
     </Link>
   );
 }

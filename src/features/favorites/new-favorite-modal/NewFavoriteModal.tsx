@@ -12,7 +12,7 @@ interface NewContentModalProps {
 }
 
 export function NewFavoriteModal({ onClose, currentPath }: NewContentModalProps): JSX.Element {
-  const [favorite, setFavorite] = useState<FavoriteModel>(new FavoriteModel('', '', '', ''));
+  const [favorite, setFavorite] = useState<FavoriteModel>(new FavoriteModel('', '', '', '', ''));
   
   const handleFavoriteInputData = (ev: ChangeEvent<HTMLInputElement>): void => {
     setFavorite(_prev => ({
