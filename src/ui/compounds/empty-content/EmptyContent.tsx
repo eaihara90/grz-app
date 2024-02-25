@@ -9,7 +9,9 @@ interface EmptyContentProps {
 export function EmptyContent({ children, text }:EmptyContentProps ): JSX.Element {
   return (
     <div className="empty-content">
-      {children}  
+      <div className="empty-content__icon">
+        {children}
+      </div>
       <p className="empty-content__text">{ text }</p>
     </div>
   );
