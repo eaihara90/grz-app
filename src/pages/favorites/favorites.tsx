@@ -75,10 +75,10 @@ export function FavoritesPage(): JSX.Element {
       </div>
 
       { (newContentModal.open && newContentModal.type === 'folder')  && 
-        <NewFolderModal onClose={() => setNewContentModal({ open: false, type: '' })} currentPathId={id}/>
+        <NewFolderModal onClose={() => setNewContentModal({ open: false, type: '' })} currentFolder={{ id: content._id, path: content.path }}/>
       }
       { (newContentModal.open && newContentModal.type === 'favorite')  && 
-        <NewFavoriteModal onClose={() => setNewContentModal({ open: false, type: '' })} currentPathId={id}/>
+        <NewFavoriteModal onClose={() => setNewContentModal({ open: false, type: '' })} currentFolder={{ id: content._id, path: content.path }} />
       }
     </PageWrapper>
   );

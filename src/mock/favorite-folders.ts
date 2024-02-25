@@ -1,12 +1,3 @@
-import { FavoriteFolderModel } from 'src/models/favorites/favorite-folder.model';
-
-export function getFavoriteFolder(path: string): Promise<FavoriteFolderModel> {
-  return new Promise((res) => {
-    setTimeout(() => {
-      res(tempFavoriteFolders.find(folder => folder.path === path) as FavoriteFolderModel);
-    }, 1000);
-  });
-}
 
 export function saveFavorite(_favorite: any, path: string): Promise<any> {
   tempFavoriteFolders.forEach(folder => {
@@ -16,11 +7,11 @@ export function saveFavorite(_favorite: any, path: string): Promise<any> {
     }
   });
   return new Promise((res) => {
-    res(tempFavoriteFolders);
+    res([]);
   });
 }
 
-const tempFavoriteFolders: FavoriteFolderModel[] = [
+const tempFavoriteFolders = [
   {
     _id: '1',
     title: 'Root',

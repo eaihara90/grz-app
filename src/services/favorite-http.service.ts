@@ -1,3 +1,4 @@
+import { NewFavoriteFolderInputDTO } from "src/models/favorites/favorite-folder.model";
 
 class FavoriteHttpService {
   private readonly protocol: string = 'http';
@@ -12,9 +13,13 @@ class FavoriteHttpService {
     return fetch(url);
   }
 
-  public saveFavoriteFolder(_newFolder ): Promise<any> {
+  public saveFavoriteFolder(_newFolder: NewFavoriteFolderInputDTO): Promise<any> {
+    const headers = {
+      "Content-Type": "application/json",
+    };
     const url = `${this.protocol}://${this.host}:${this.port}/${this.baseApi}/${this.path}`;
-    return fetch(url, { method: 'POST', body: JSON.stringify()});
+    console.log(_newFolder);
+    return fetch(url, { method: 'POST', body: JSON.stringify(_newFolder), headers: headers });
   }
 }
 

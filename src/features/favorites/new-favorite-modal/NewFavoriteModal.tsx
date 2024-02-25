@@ -7,11 +7,11 @@ import { FavoriteModel } from 'src/models/favorites/favorite.model';
 import { saveFavorite } from 'src/mock/favorite-folders';
 
 interface NewContentModalProps {
-  currentPath: string;
+  currentFolder: { id: string, path: string };
   onClose: () => void;
 }
 
-export function NewFavoriteModal({ onClose, currentPath }: NewContentModalProps): JSX.Element {
+export function NewFavoriteModal({ onClose, currentFolder }: NewContentModalProps): JSX.Element {
   const [favorite, setFavorite] = useState<FavoriteModel>(new FavoriteModel('', '', '', '', ''));
   
   const handleFavoriteInputData = (ev: ChangeEvent<HTMLInputElement>): void => {
@@ -22,7 +22,7 @@ export function NewFavoriteModal({ onClose, currentPath }: NewContentModalProps)
   }
 
   const handleSaveContent = (): void => {
-    saveFavorite(favorite, currentPath).then((response) => console.log(response));
+    saveFavorite(favorite, currentFolder.id).then((response) => console.log(response));
   }
 
   return (
