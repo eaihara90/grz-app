@@ -8,3 +8,11 @@ export class FavoriteFolderModel {
   folders!: FavoriteFolderModel[];
   thumbnailUrl?: string;
 }
+
+export class NewFavoriteFolderInputDTO {
+  title!: string;
+  path!: string;
+  files!: string[];
+  folders!: string[];
+  parentFolderId!: string;
+}

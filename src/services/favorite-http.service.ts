@@ -11,6 +11,11 @@ class FavoriteHttpService {
     const url = `${this.protocol}://${this.host}:${this.port}/${this.baseApi}/${this.path}/${_id}`;
     return fetch(url);
   }
+
+  public saveFavoriteFolder(_newFolder ): Promise<any> {
+    const url = `${this.protocol}://${this.host}:${this.port}/${this.baseApi}/${this.path}`;
+    return fetch(url, { method: 'POST', body: JSON.stringify()});
+  }
 }
 
 export const favoriteHttpService = new FavoriteHttpService();

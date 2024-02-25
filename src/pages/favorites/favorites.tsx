@@ -4,13 +4,13 @@ import { useLocation } from 'react-router-dom';
 import './Favorites.scss';
 import { favoriteHttpService } from 'src/services/favorite-http.service';
 import { FavoriteFolderModel } from 'src/models/favorites/favorite-folder.model';
-import { PageWrapper } from 'src/ui/compounds';
+import { EmptyContent, PageWrapper } from 'src/ui/compounds';
 import { GrzButtonOptions } from 'src/ui/atoms';
 import { FavoriteCard, FavoriteFolderCard, NewFavoriteModal, NewFolderModal } from 'src/features/favorites';
 
 export function FavoritesPage(): JSX.Element {
   const location = useLocation();
-  const id = new URLSearchParams(location.search).get('id');
+  const id = new URLSearchParams(location.search).get('id') || '';
   const [content, setContent] = useState<FavoriteFolderModel>(new FavoriteFolderModel());
   const [loading, setLoading] = useState(false);
   const [newContentModal, setNewContentModal] = useState<{ open: boolean, type: string }>({ open: false, type: '' });
@@ -65,6 +65,8 @@ export function FavoritesPage(): JSX.Element {
           { (!loading && content!.favorites?.length > 0) && content?.favorites?.map((favorite, i) => (
             <FavoriteCard key={i} favorite={favorite} onRemoveFavorite={handleRemoveFavorite}/>
           ))}
+
+          { (!loading && !content.folders?.length && !content.favorites?.length) && <EmptyContent text="Empty folder" />}
         </div>
       </div>
 
