@@ -14,6 +14,7 @@ export function NewFolderModal({ currentFolder, onClose }: NewFolderModal): JSX.
   console.log(currentFolder);
 
   function formatPath(_path: string, _newPath: string): string {
+    return `${_path}/${_newPath}`;
     let newPath = _path;
 
     const tempPaths = _newPath.toLowerCase().split(' ');

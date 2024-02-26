@@ -39,7 +39,15 @@ export function FavoritesPage(): JSX.Element {
   }
 
   const handleRemoveFolder = (_id: string): void => {
-
+    favoriteHttpService.removeFolder(_id)
+    .then(_response => _response.json())
+    .then(() => {
+      setLoading(false);
+    })
+    .catch(error => {
+      console.log(error);
+      setLoading(false);
+    });
   }
 
   const handleRemoveFavorite = (_id: string): void => {

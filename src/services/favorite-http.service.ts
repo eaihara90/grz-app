@@ -18,6 +18,11 @@ class FavoriteHttpService {
     const url = `${this.protocol}://${this.host}:${this.port}/${this.baseApi}/${this.path}`;
     return fetch(url, { method: 'POST', body: JSON.stringify(_newFolder), headers: headers });
   }
+
+  public removeFolder(_id: string): Promise<any> {
+    const url = `${this.protocol}://${this.host}:${this.port}/${this.baseApi}/${this.path}/${_id}`;
+    return fetch(url, { method: 'DELETE' });
+  }
 }
 
 export const favoriteHttpService = new FavoriteHttpService();
