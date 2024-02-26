@@ -1,8 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 
 import './NewFavoriteModal.scss';
-import { Modal } from 'src/ui/compounds';
-import { GrzInput, GrzButton } from 'src/ui/atoms';
+import { GrzInput, GrzButton, Modal } from 'src/ui/atoms';
 import { FavoriteModel } from 'src/models/favorites/favorite.model';
 import { saveFavorite } from 'src/mock/favorite-folders';
 

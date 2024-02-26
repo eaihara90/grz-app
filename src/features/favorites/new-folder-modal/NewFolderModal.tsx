@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
 import './NewFolderModal.scss';
-import { Modal } from 'src/ui/compounds';
-import { GrzButton, GrzInput } from 'src/ui/atoms';
+import { GrzButton, GrzInput, Modal } from 'src/ui/atoms';
 import { favoriteHttpService } from 'src/services/favorite-http.service';
 
 interface NewFolderModal {

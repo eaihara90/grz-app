@@ -5,7 +5,7 @@ import './Favorites.scss';
 import { favoriteHttpService } from 'src/services/favorite-http.service';
 import { FavoriteFolderModel } from 'src/models/favorites/favorite-folder.model';
 import { EmptyContent, PageWrapper } from 'src/ui/compounds';
-import { GrzButtonOptions } from 'src/ui/atoms';
+import { GrzButtonOptions, Loading } from 'src/ui/atoms';
 import { FavoriteCard, FavoriteFolderCard, NewFavoriteModal, NewFolderModal } from 'src/features/favorites';
 
 export function FavoritesPage(): JSX.Element {
@@ -48,6 +48,7 @@ export function FavoritesPage(): JSX.Element {
 
   return (
     <PageWrapper title="Favorites">
+      { loading && <Loading />}
       <div className="favorites-page">
         <div className="favorites-page__header">
           <GrzButtonOptions
@@ -67,7 +68,7 @@ export function FavoritesPage(): JSX.Element {
           ))}
 
           { (!loading && !content.folders?.length && !content.favorites?.length) &&
-            <EmptyContent text="Empty folder">
+            <EmptyContent text={`Folder ${content.title} is empty`}>
               <i className="ph ph-folder-simple-dashed"></i>
             </EmptyContent>
           }
