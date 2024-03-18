@@ -2,8 +2,8 @@ import { ChangeEvent, useState } from 'react';
 
 import './NewFavoriteModal.scss';
 import { GrzInput, GrzButton, Modal } from 'src/ui/atoms';
-import { FavoriteModel } from 'src/models/favorites/favorite.model';
-import { saveFavorite } from 'src/mock/favorite-folders';
+import { NewFileDTO } from 'src/models/favorites/favorite.model';
+import { favoriteHttpService } from 'src/services/favorite-http.service';
 
 interface NewContentModalProps {
   currentFolder: { id: string, path: string };
@@ -11,7 +11,7 @@ interface NewContentModalProps {
 }
 
 export function NewFavoriteModal({ onClose, currentFolder }: NewContentModalProps): JSX.Element {
-  const [favorite, setFavorite] = useState<FavoriteModel>(new FavoriteModel('', '', '', '', ''));
+  const [favorite, setFavorite] = useState<NewFileDTO>(new NewFileDTO('', '', currentFolder.id, '', ''));
   
   const handleFavoriteInputData = (ev: ChangeEvent<HTMLInputElement>): void => {
     setFavorite(_prev => ({
@@ -21,7 +21,10 @@ export function NewFavoriteModal({ onClose, currentFolder }: NewContentModalProp
   }
 
   const handleSaveContent = (): void => {
-    saveFavorite(favorite, currentFolder.id).then((response) => console.log(response));
+    favoriteHttpService.saveFavorite(favorite)
+    .then((response) => response.json())
+    .then(_data => console.log(_data))
+    .catch((error) => console.error(error));
   }
 
   return (
@@ -52,7 +55,7 @@ export function NewFavoriteModal({ onClose, currentFolder }: NewContentModalProp
             </div>
           </div>
 
-          { favorite.thumbnailUrl.length > 10 &&
+          { favorite!.thumbnailUrl!.length > 10 &&
             <div className="thumbnail-url-preview">
               <img src={favorite?.thumbnailUrl} alt="" className="image"/>
             </div>

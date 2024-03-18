@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import './Favorites.scss';
 import { favoriteHttpService } from 'src/services/favorite-http.service';
 import { FavoriteFolderModel } from 'src/models/favorites/favorite-folder.model';
 import { EmptyContent, PageWrapper } from 'src/ui/compounds';
-import { GrzButtonOptions, Loading } from 'src/ui/atoms';
+import { GrzButton, GrzButtonLink, GrzButtonOptions, Loading } from 'src/ui/atoms';
 import { FavoriteCard, FavoriteFolderCard, NewFavoriteModal, NewFolderModal } from 'src/features/favorites';
 
 export function FavoritesPage(): JSX.Element {
@@ -41,7 +41,8 @@ export function FavoritesPage(): JSX.Element {
   const handleRemoveFolder = (_id: string): void => {
     favoriteHttpService.removeFolder(_id)
     .then(_response => _response.json())
-    .then(() => {
+    .then((_response) => {
+      console.log(_response);
       setLoading(false);
     })
     .catch(error => {
@@ -59,6 +60,11 @@ export function FavoritesPage(): JSX.Element {
       { loading && <Loading />}
       <div className="favorites-page">
         <div className="favorites-page__header">
+          { content.path !== 'root' ?
+            <GrzButtonLink theme="secondary" size="sm" to={`/favorites?id=${content?.parentFolderId}`}>
+              Back
+            </GrzButtonLink> : null
+          }
           <GrzButtonOptions
             options={['Folder', 'Favorite']}
             label="Add new"
@@ -68,14 +74,14 @@ export function FavoritesPage(): JSX.Element {
         </div>
 
         <div className="favorites-page__content">
-          { (!loading && content!.folders?.length > 0) && content?.folders?.map((folder, i) => (
+          { (!loading && content?.folders?.length > 0) && content?.folders?.map((folder, i) => (
             <FavoriteFolderCard key={i} folder={folder} onRemoveFolder={handleRemoveFolder}/>
           ))}
-          { (!loading && content!.favorites?.length > 0) && content?.favorites?.map((favorite, i) => (
+          { (!loading && content?.favorites?.length > 0) && content?.favorites?.map((favorite, i) => (
             <FavoriteCard key={i} favorite={favorite} onRemoveFavorite={handleRemoveFavorite}/>
           ))}
 
-          { (!loading && !content.folders?.length && !content.favorites?.length) &&
+          { (!loading && !content?.folders?.length && !content?.favorites?.length) &&
             <EmptyContent text={`Folder ${content.title} is empty`}>
               <i className="ph ph-folder-simple-dashed"></i>
             </EmptyContent>

@@ -7,6 +7,7 @@ export class FavoriteFolderModel {
   favorites!: FavoriteModel[];
   folders!: FavoriteFolderModel[];
   thumbnailUrl?: string;
+  parentFolderId?: string;
 }
 
 export class NewFavoriteFolderInputDTO {

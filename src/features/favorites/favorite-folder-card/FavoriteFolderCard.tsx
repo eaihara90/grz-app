@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { MouseEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import './FavoriteFolderCard.scss';
@@ -13,21 +13,31 @@ interface FavoriteFolderCardProps {
 
 export function FavoriteFolderCard({ folder, onRemoveFolder }: FavoriteFolderCardProps): JSX.Element {
   const [isOpenRemoveConfirmationDialog, setIsOpenRemoveConfirmationDialog] = useState<boolean>(false);
+
+  const handleRemoveFolder = (ev: MouseEvent<HTMLButtonElement>): void => {
+    console.log("🚀 ~ handleRemoveFolder ~ ev:", ev)
+    ev.stopPropagation();
+    ev.preventDefault();
+    setIsOpenRemoveConfirmationDialog(true);
+  }
+
   return (
-    <Link to={`/favorites?id=${folder._id}`} className="favorite-folder-card">
-      <i className="ph ph-folder-simple favorite-folder-card__icon"></i>
-      <p className="favorite-folder-card__title">{folder.title}</p>
+    <>
+      <Link to={`/favorites?id=${folder._id}`} className="favorite-folder-card">
+        <i className="ph ph-folder-simple favorite-folder-card__icon"></i>
+        <p className="favorite-folder-card__title">{folder.title}</p>
 
-      <div className="favorite-folder-card__actions">
-        <GrzIconButton size="md" onClick={(ev) => ev.preventDefault()}>
-          <i className="ph ph-pencil-simple-line"></i>
-        </GrzIconButton>
+        <div className="favorite-folder-card__actions">
+          <GrzIconButton size="md" onClick={(ev) => ev.preventDefault()}>
+            <i className="ph ph-pencil-simple-line"></i>
+          </GrzIconButton>
 
-        <GrzIconButton size="md" theme="danger">
-          <i className="ph ph-trash"></i>
-        </GrzIconButton>
-      </div>
-
+          <GrzIconButton size="md" theme="danger" onClick={handleRemoveFolder}>
+            <i className="ph ph-trash"></i>
+          </GrzIconButton>
+        </div>
+      </Link>
+    
       { isOpenRemoveConfirmationDialog &&
         <ConfirmationDialog
           title="Remove favorite"
@@ -38,6 +48,6 @@ export function FavoriteFolderCard({ folder, onRemoveFolder }: FavoriteFolderCar
           Type "remove" and click confirm to remove this favorite
         </ConfirmationDialog>
       }
-    </Link>
+    </>
   );
 }

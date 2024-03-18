@@ -7,3 +7,13 @@ export class FavoriteModel {
     public thumbnailUrl: string,
   ) { }
 }
+
+export class NewFileDTO {
+  constructor(
+    public title: string,
+    public url: string,
+    public folderId: string,
+    public thumbnailUrl?: string,
+    public description?: string
+  ) { } 
+}

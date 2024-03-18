@@ -1,0 +1,82 @@
+@mixin btn-style {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px 2px rgba(var(--c-black), 0.15);
+  color: rgb(var(--c-white));
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  transition: 200ms ease;
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+.grz-btn-link {
+  @include btn-style;
+  
+  &--primary {
+    background-color: rgb(var(--c-primary));
+
+    &:hover {
+      background-color: rgb(var(--c-primary-dark));
+    }
+  
+    &:active {
+      background-color: rgb(var(--c-primary-darken));
+    }
+  }
+  
+  &--danger {
+    background-color: rgb(var(--c-danger));
+
+    &:hover {
+      background-color: rgb(var(--c-danger-dark));
+    }
+  
+    &:active {
+      background-color: rgb(var(--c-danger-darken));
+    }
+  }
+
+  &--secondary {
+    background-color: rgb(var(--c-white));
+    border-color: rgb(var(--c-secondary));
+    color: rgb(var(--c-secondary));
+
+    &:hover {
+      border-color: rgb(var(--c-secondary-dark));
+      color: rgb(var(--c-secondary-dark));
+    }
+  
+    &:active {
+      border-color: rgb(var(--c-secondary-darken));
+      color: rgb(var(--c-secondary-darken));
+    }
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.sm {
+    font-size: 14px;
+    height: 28px;
+    padding: 0 20px;
+  }
+
+  &.md {
+    font-size: 18px;
+    height: 36px;
+    padding: 0 28px;
+  }
+
+  &.lg {
+    font-size: 22px;
+    height: 44px;
+    padding: 0 36px;
+  }
+}
